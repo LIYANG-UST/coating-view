@@ -1,7 +1,7 @@
 import service from './request.js';
 
 const clientId = '09532fd2fed5489696eca79b64e2caca';
-const baseURL = '//www.1weilian.com:8750/mtInterface';
+const baseURL = 'http://www.1weilian.com:8750/mtInterface';
 // const baseURL = '/backend';
 
 export default {
