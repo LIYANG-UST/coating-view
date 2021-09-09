@@ -38,11 +38,11 @@
   <div style="font-weight: bold; font-size: large; margin-top: 20px">
     Current Weather: {{ weather }}
   </div>
-  <div style="font-weight: bold; font-size: large">
+  <div style="font-weight: bold; font-size: large; margin-bottom: 20px">
     Current Temperature: {{ cTemp }}°C
   </div>
   <el-container
-    style="height: 550px; width: 1400px; margin-top: 15px; margin-bottom: 25px"
+    style="height: 550px; width: 1400px; margin: 0 auto;"
   >
     <div
       id="mycharts"
@@ -56,7 +56,8 @@
   <div>deviceSN2:{{ deviceSN2 }}</div>
   <div>tempList1:{{ tempList1 }}</div>
   <div>tempList2:{{ tempList2 }}</div> -->
-  <a href="https://mucslab-dev.hkust.edu.hk/"
+  <div style="margin-top: 30px"></div>
+  <a href="https://mucslab-dev.hkust.edu.hk/" 
     >@Powered by HKUST MuCSL Lab, 2021</a
   >
 </template>
@@ -137,18 +138,19 @@ export default defineComponent({
     },
 
     async getRecentData() {
+      let weather = await service.getWeatherData();
+      this.weather = weather.data.results[0].now.text
+      this.cTemp = weather.data.results[0].now.temperature
+      console.log(weather, this.cTemp)
+
+
       const TenDaysData = await service.getTenDaysData();
       console.log(TenDaysData);
       this.dateList = TenDaysData.data.data.dataList[0].dateList
       this.tempList1 = TenDaysData.data.data.dataList[1].temperatureList
       this.tempList2 = TenDaysData.data.data.dataList[0].temperatureList
 
-      this.updateChart()
-
-      let weather = await service.getWeatherData();
-      this.weather = weather.data.results[0].now.text
-      this.cTemp = weather.data.results[0].now.temperature
-      console.log(weather, this.cTemp)
+      this.updateChart()  
     },
 
     async getHistoryData() {
