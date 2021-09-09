@@ -2,6 +2,8 @@ import service from './request.js';
 
 const clientId = '09532fd2fed5489696eca79b64e2caca';
 const baseURL = 'http://www.1weilian.com:8750/mtInterface';
+
+const localURL = 'http://18.162.199.13:5000/';
 // const baseURL = '/backend';
 
 export default {
@@ -21,7 +23,7 @@ export default {
 
     getDevice: async () => {
         return await service
-            .post(baseURL + '/device/getDevices', {
+            .get(localURL + '/api/device/getDevices', {
                 "clientId": clientId,
                 "page": 0,
                 "rows": 10
@@ -32,38 +34,38 @@ export default {
 
     getTenDaysData: async () => {
         return await service
-            .post(baseURL + '/realTime/getRealTimeCurve', {
-                // "snList": [  "XXXXXX", "XXXXXX"],
+            .get(localURL + '/api/recentdata', {
+                params:{
                 "clientId": clientId,
                 "page": 0,
                 "rows": 10
+                }
             }).then(res => res)
             .catch(err => console.log(err))
     },
 
     getHistoryData: async (startTime, endTime, sn) => {
         return await service
-            .post(baseURL + '/history/historyCurveData', {
-                "sn": sn,
-                "clientId": clientId,
-                "startTime": startTime,
-                "endTime": endTime
+            .get(localURL + '/api/historydata',{
+                params:{
+                    "sn": sn,
+                    "clientId": clientId,
+                    "startTime": startTime,
+                    "endTime": endTime
+                    }
             }).then(res => res)
             .catch(err => console.log(err))
     },
 
     getWeatherData: async () => {
         return await service
-            .get('https://api.seniverse.com/v3/weather/now.json', {
+            .get(localURL + '/api/weather', {
                 params: {
                     key: "S7Q1HfGchFIi1O2WX",
                     location: "xianggang",
                     language: "en"
                 },
                 crossDomain: true,
-                // withCredentials: false,
-
-
             }).then(res => res)
             .catch(err => console.log(err))
     }
