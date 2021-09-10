@@ -71,8 +71,8 @@ export default defineComponent({
   data () { 
     return {
       charInstance: null,
-      deviceSN1: "", // coated window
-      deviceSN2: "", //pure window
+      deviceSN1: "800220050001", // coated window
+      deviceSN2: "800220050002", //pure window
       tempList1: [] ,
       dateList: [],
       tempList2: [],
@@ -124,7 +124,7 @@ export default defineComponent({
     async initChart() {
       this.ChartInstance = echarts.init(document.getElementById('mycharts'));
       console.log(this.ChartInstance);
-      await this.getDevice();
+      // await this.getDevice();
       await this.getRecentData();
     },
 
