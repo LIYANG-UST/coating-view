@@ -1,18 +1,11 @@
 {
-    "rewrites": [
-        {
-            "source": "/api/(.*)",
-            "destination": "/api/api.py"
-        }
-    ],
-    
-    "redirects": [
-        {
-            "source": "/privacy/",
-            "destination": "/announcement",
-            "permanent": false
-        }
-    ],
-    
-    "trailingSlash": true
+    "version": 2,
+	"routes": [{
+		"headers": {
+			"Access-Control-Allow-Origin": "*"
+		},
+		"src": "/api(.*)",
+		"dest": "api/main.py",
+		"continue": true
+	}] 
 }
