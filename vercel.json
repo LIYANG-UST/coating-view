@@ -5,7 +5,7 @@
 			"Access-Control-Allow-Origin": "*"
 		},
 		"src": "/api(.*)",
-		"dest": "api/api.py",
+		"dest": "/api/api.py",
 		"continue": true
 	}] 
 }

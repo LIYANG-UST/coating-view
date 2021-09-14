@@ -1,3 +1,4 @@
-Flask 
+Flask == 1.0.2
 Flask-Cors 
-requests 
+requests
+Werkzeug == 1.0.1 
