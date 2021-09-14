@@ -1,0 +1,16 @@
+{
+    "rewrites": [
+        {
+            "source": "/api/(.*)",
+            "destination": "/api/api.py"
+        }
+    ],
+    
+    "redirects": [
+        {
+            "source": "/privacy/",
+            "destination": "/announcement",
+            "permanent": false
+        }
+    ]
+}

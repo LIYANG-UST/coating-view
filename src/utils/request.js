@@ -9,15 +9,3 @@ const service = axios.default.create({
 })
 
 export default service
-
-// axios.post('http://www.1weilian.com:8750/mtInterface/device/getDevices', {
-//     "clientId": "09532fd2fed5489696eca79b64e2caca",
-//     "page": 0,
-//     "rows": 10
-// })
-//     .then(function (response) {
-//         console.log(response);
-//     })
-//     .catch(function (error) {
-//         console.log(error);
-//     });

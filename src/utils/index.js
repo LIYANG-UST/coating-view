@@ -4,6 +4,7 @@ const clientId = '09532fd2fed5489696eca79b64e2caca';
 const baseURL = 'http://www.1weilian.com:8750/mtInterface';
 
 const localURL = 'https://18.162.199.13:5000';
+const localURL2 = 'http://127.0.0.1';
 // const baseURL = '/backend';
 
 export default {
@@ -23,7 +24,7 @@ export default {
 
     getDevice: async () => {
         return await service
-            .get(localURL + '/api/device/getDevices', {
+            .get(localURL2 + '/api/device/getDevices', {
                 "clientId": clientId,
                 "page": 0,
                 "rows": 10
@@ -34,7 +35,7 @@ export default {
 
     getTenDaysData: async () => {
         return await service
-            .get(localURL + '/api/recentdata', {
+            .get(localURL2 + '/api/recentdata', {
                 params:{
                 "clientId": clientId,
                 "page": 0,
@@ -46,7 +47,7 @@ export default {
 
     getHistoryData: async (startTime, endTime, sn) => {
         return await service
-            .get(localURL + '/api/historydata',{
+            .get(localURL2 + '/api/historydata',{
                 params:{
                     "sn": sn,
                     "clientId": clientId,
@@ -59,7 +60,8 @@ export default {
 
     getWeatherData: async () => {
         return await service
-            .get(localURL + '/api/weather', {
+            .get(localURL2 + '/api/weather', {
+                // .get('/weatherapi', {
                 params: {
                     key: "S7Q1HfGchFIi1O2WX",
                     location: "xianggang",
