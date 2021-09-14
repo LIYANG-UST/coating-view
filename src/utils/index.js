@@ -62,11 +62,11 @@ export default {
         return await service
             .get(localURL2 + '/api/weather', {
                 // .get('/weatherapi', {
-                params: {
-                    key: "S7Q1HfGchFIi1O2WX",
-                    location: "xianggang",
-                    language: "en"
-                },
+                // params: {
+                //     key: "S7Q1HfGchFIi1O2WX",
+                //     location: "xianggang",
+                //     language: "en"
+                // },
                 crossDomain: true,
             }).then(res => res)
             .catch(err => console.log(err))
