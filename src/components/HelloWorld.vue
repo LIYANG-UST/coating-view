@@ -147,8 +147,8 @@ export default defineComponent({
       const TenDaysData = await service.getTenDaysData();
       console.log(TenDaysData);
       this.dateList = TenDaysData.data.data.dataList[0].dateList
-      this.tempList1 = TenDaysData.data.data.dataList[1].temperatureList
-      this.tempList2 = TenDaysData.data.data.dataList[0].temperatureList
+      this.tempList1 = TenDaysData.data.data.dataList[0].temperatureList
+      this.tempList2 = TenDaysData.data.data.dataList[1].temperatureList
 
       this.updateChart()  
     },
