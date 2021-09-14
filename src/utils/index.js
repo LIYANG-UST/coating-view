@@ -4,7 +4,7 @@ const clientId = '09532fd2fed5489696eca79b64e2caca';
 const baseURL = 'http://www.1weilian.com:8750/mtInterface';
 
 const localURL = 'https://18.162.199.13:5000';
-const localURL2 = 'http://127.0.0.1';
+const localURL2 = 'https://coating-view.vercel.app';
 // const baseURL = '/backend';
 
 export default {
