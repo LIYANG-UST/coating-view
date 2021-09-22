@@ -41,9 +41,7 @@
   <div style="font-weight: bold; font-size: large; margin-bottom: 20px">
     Current Temperature: {{ cTemp }}°C
   </div>
-  <el-container
-    style="height: 550px; width: 1400px; margin: 0 auto;"
-  >
+  <el-container style="height: 550px; width: 1400px; margin: 0 auto">
     <div
       id="mycharts"
       ref="myRef"
@@ -57,7 +55,7 @@
   <div>tempList1:{{ tempList1 }}</div>
   <div>tempList2:{{ tempList2 }}</div> -->
   <div style="margin-top: 30px"></div>
-  <a href="https://mucslab-dev.hkust.edu.hk/" 
+  <a href="https://mucslab-dev.hkust.edu.hk/"
     >@Powered by HKUST MuCSL Lab, 2021</a
   >
 </template>
@@ -68,7 +66,7 @@ import service from '../utils/index.js'
 
 export default defineComponent({
   name: 'echarts',
-  data () { 
+  data () {
     return {
       charInstance: null,
       deviceSN1: "800220050001", // coated window
@@ -112,13 +110,14 @@ export default defineComponent({
       ]
     }
   },
-    mounted() {
-      
-      this.initChart();
-      this.timer = setInterval(() => {
-        setTimeout(this.getRecentData,0)}, 1000 * 30
-      )
-    },
+
+  mounted() {
+
+    this.initChart();
+    this.timer = setInterval(() => {
+      setTimeout(this.getRecentData,0)}, 1000 * 30
+    )
+  },
 
   methods: {
     async initChart() {
@@ -147,10 +146,19 @@ export default defineComponent({
       const TenDaysData = await service.getTenDaysData();
       console.log(TenDaysData);
       this.dateList = TenDaysData.data.data.dataList[0].dateList
-      this.tempList1 = TenDaysData.data.data.dataList[1].temperatureList   //[0]: 5002 pure
-      this.tempList2 = TenDaysData.data.data.dataList[0].temperatureList    // [1]:5001 coated
 
-      this.updateChart()  
+      if (TenDaysData.data.data.dataList[1].sn === "800220050001") {
+        console.log("sn1 is coated")
+        this.tempList1 = TenDaysData.data.data.dataList[1].temperatureList
+        this.tempList2 = TenDaysData.data.data.dataList[0].temperatureList
+      }
+      else if (TenDaysData.data.data.dataList[1].sn === "800220050002") {
+        this.tempList1 = TenDaysData.data.data.dataList[0].temperatureList
+        this.tempList2 = TenDaysData.data.data.dataList[1].temperatureList
+      }
+
+
+      this.updateChart()
     },
 
     async getHistoryData() {
@@ -232,7 +240,7 @@ export default defineComponent({
         ]
       }
       this.ChartInstance.setOption(dataOption)
-      
+
     }
   },
 });
