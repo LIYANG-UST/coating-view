@@ -1,19 +1,5 @@
 <template>
   <h1>Coating Temperature Data</h1>
-  <!-- <el-row>
-    <el-col :span="4"> </el-col>
-    <el-col :span="16"> -->
-  <!-- <el-button type="primary" @click="getDevice">Get Device Info</el-button> -->
-  <!-- <el-button type="primary" @click="getRecentData"
-        >Get Recent Data</el-button
-      > -->
-  <!-- <el-button type="primary" @click="getHistoryData"
-        >Get History Data</el-button
-      > -->
-  <!-- <el-button type="primary" @click="updateChart">Update Chart</el-button> -->
-  <!-- </el-col>
-    <el-col :span="4"></el-col>
-  </el-row> -->
   <div class="block">
     <div class="demonstration" style="margin-bottom: 6px">
       Select Time Range
@@ -35,11 +21,18 @@
     >
     <!-- </div> -->
   </div>
-  <div style="font-weight: bold; font-size: large; margin-top: 20px">
+  <!-- <div style="font-weight: bold; font-size: large; margin-top: 20px">
     Current Weather: {{ weather }}
-  </div>
-  <div style="font-weight: bold; font-size: large; margin-bottom: 20px">
-    Current Temperature: {{ cTemp }}°C
+  </div> -->
+  <div
+    style="
+      font-weight: bold;
+      font-size: large;
+      margin-top: 20px;
+      margin-bottom: 20px;
+    "
+  >
+    Current Air Temperature: {{ cTemp }}°C, {{ weather }}
   </div>
   <el-container style="height: 550px; width: 1400px; margin: 0 auto">
     <div
@@ -203,7 +196,7 @@ export default defineComponent({
         }
         },
         legend: {
-          data: ['PureWindow', 'CoatedWindow']
+          data: ['Pure Window', 'Coated Window']
         },
         xAxis: {
           name: 'time',
@@ -226,17 +219,33 @@ export default defineComponent({
         },
         series: [
           {
-            name: 'CoatedWindow',
+            name: 'Coated Window',
             type: 'line',
             data: this.tempList1,
             smooth: true
           },
           {
-            name: 'PureWindow',
+            name: 'Pure Window',
             type: 'line',
             data: this.tempList2,
             smooth: true
+
           }
+
+          // {
+          //   type: 'line',
+          //   data: this.tempList2,
+          //   smooth: true,
+          //   effect: {
+          //     constantSpeed: 1,
+          //     show: true,
+          //     trailLength: 0.1,
+          //     symbolSize: 1.5,
+          //     loop: true
+          //   },
+          //   zlevel: 1
+
+          // }
         ]
       }
       this.ChartInstance.setOption(dataOption)
